@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>PHP OBJET TP</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <?php
 try{
@@ -23,7 +24,26 @@ try{
       <p><?php $unClient=recupUnObjetClient($conn,123); ?></p>
       <p><?php echo $unClient->afficheUnClient(); ?></p>
       <p><?php afficheTousClientsObjet($conn); ?></p>
-    </div>
+      </div>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>NOCLI</th>
+            <th>TITRECLIENT</th>
+            <th>NOMCLI</th>
+            <th>PRENOMCLI</th>
+            <th>ADRESSERUE1CLI</th>
+            <th>ADRESSERUE2CLI</th>
+            <th>CPCLI</th>
+            <th>VILLECLI</th>
+            <th>TELCLI</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php tableauTousClients($conn); ?>
+        </tbody>
+      </table>
+
   </body>
   <?php
 }catch (Exception $ex){

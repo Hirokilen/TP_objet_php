@@ -42,5 +42,11 @@ function recupPlusieursObjetsClient($unObjetPdo){
     throw new Exception ('Aucun client trouvé');
   }
 }
+function tableauTousClients($unObjetPdo){
+  $tableauClients = recupPlusieursObjetsClient($unObjetPdo);
+  foreach ($tableauClients as $unObjetClient){
+    echo $unObjetClient->afficheTabClient() . "<br>";
+    }
+}
 
 ?>
