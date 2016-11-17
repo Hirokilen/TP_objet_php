@@ -16,4 +16,13 @@ function afficheTousClients($unObjetPdo){
     echo "Numéro du client : " . $unClient->NOCLI . "Nom du client : " . $unClient->NOMCLI . " Prénom : " .$unClient->PRENOMCLI . "<br>";
   }
 }
+function recupUnObjetClient($unObjetPdo,$id){
+  $sql = "select * from CLIENT where NOCLI=:pnocli";
+  $ligne = $unObjetPdo->prepare($sql);
+  $ligne->bindValue('pnocli',$id,PDO::PARAM_INT);
+  $ligne->execute();
+  $unClient = $ligne->fetchObject('Client');
+  var_dump($unClient);
+  return $unClient;
+}
 ?>
