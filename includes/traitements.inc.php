@@ -25,4 +25,22 @@ function recupUnObjetClient($unObjetPdo,$id){
   var_dump($unClient);
   return $unClient;
 }
+function afficheTousClientsObjet($unObjetPdo){
+  $tableauClients = recupPlusieursObjetsClient($unObjetPdo);
+  echo "<p>liste des clients <br>";
+  foreach ($tableauClients as $unObjetClient){
+    echo $unObjetClient->afficheUnClient() . "<br>";
+    }
+}
+function recupPlusieursObjetsClient($unObjetPdo){
+  $sql = "select * from CLIENT";
+  $lignes = $unObjetPdo->query($sql);
+  if ($lignes->rowCount() > 0){
+    $tableauClients = $lignes->fetchAll(PDO::FETCH_CLASS, 'Client');
+    return $tableauClients;
+  } else {
+    throw new Exception ('Aucun client trouvé');
+  }
+}
+
 ?>
