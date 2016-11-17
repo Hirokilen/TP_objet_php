@@ -7,11 +7,14 @@
 <?php
 try{
   define('RACINE', __DIR__);
+  require 'classes/autoload.php';
+  AutoLoader::Register();
   include_once('config/conf.php');
-  include_once(INCLUDE_PATH.'connect.inc.php');
+  include_once(INCLUDE_CLASS.'bdd.php');
   include_once(INCLUDE_CLASS.'client.php');
   include_once(INCLUDE_PATH.'traitements.inc.php');
-  $conn = connectionBd();
+  $conn = Connexion::connectionBd();
+
   ?>
   <body>
     <div>
