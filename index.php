@@ -9,10 +9,14 @@ try{
   define('RACINE', __DIR__);
   include_once('config/conf.php');
   include_once(INCLUDE_PATH.'connect.inc.php');
+  include_once(INCLUDE_PATH.'traitements.inc.php');
   $conn = connectionBd();
   ?>
   <body>
-    <div>coucou</div>
+    <div>
+      <p><?php recuperationUnClient($conn, 123); ?></p>
+      <p><?php afficheTousClients($conn);?> </p>
+    </div>
   </body>
   <?php
 }catch (Exception $ex){

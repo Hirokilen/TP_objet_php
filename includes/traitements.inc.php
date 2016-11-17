@@ -6,4 +6,14 @@ function recuperationUnClient($unObjetPdo, $id){
   $ligne->execute();
   $unClient = $ligne->fetch(PDO::FETCH_OBJ);
   var_dump($unClient);
-} ?>
+  echo $unClient->NOMCLI;
+}
+function afficheTousClients($unObjetPdo){
+  $sql = "select * from CLIENT";
+  $lignes = $unObjetPdo->query($sql);
+  $lignes->setFetchMode(PDO::FETCH_OBJ);
+  while($unClient = $lignes->fetch()){
+    echo "Numéro du client : " . $unClient->NOCLI . "Nom du client : " . $unClient->NOMCLI . " Prénom : " .$unClient->PRENOMCLI . "<br>";
+  }
+}
+?>
